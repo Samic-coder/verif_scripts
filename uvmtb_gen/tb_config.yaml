@@ -1,0 +1,53 @@
+# UVM Testbench Configuration
+testbench_config:
+  agents:
+    - agent_name: "axi_master_agent"
+      config:
+        valid_enable: "valid-enable"  # opt: "valid-enable" or "valid-only"
+        work_mode: "master"           # opt: "master" or "slave"
+        packages:
+          - "uvm_pkg"
+          - "axi_pkg"
+          - "my_axi_agent_pkg"
+        driver_signals:
+          - signal: "clk"
+            type: "bit"
+          - signal: "rst_n"
+            type: "bit"  
+          - signal: "valid"
+            type: "bit"
+          - signal: "ready"
+            type: "bit"
+          - signal: "data"
+            type: "bit[31:0]"
+          - signal: "addr" 
+            type: "bit[31:0]"
+          - signal: "cmd"
+            type: "bit[2:0]"
+
+    - agent_name: "apb_slave_agent"
+      config:
+        valid_enable: "valid-only"
+        work_mode: "slave"
+        packages:
+          - "uvm_pkg"
+          - "apb_pkg"
+          - "my_apb_agent_pkg"
+        driver_signals:
+          - signal: "pclk"
+            type: "bit"
+          - signal: "preset_n"
+            type: "bit"
+          - signal: "psel"
+            type: "bit"
+          - signal: "penable"
+            type: "bit"
+          - signal: "pwrite"
+            type: "bit"
+          - signal: "paddr"
+            type: "bit[31:0]"
+          - signal: "pwdata"
+            type: "bit[31:0]"
+          - signal: "prdata"
+            type: "bit[31:0]"
+
