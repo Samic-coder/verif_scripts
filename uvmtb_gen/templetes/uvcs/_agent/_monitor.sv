@@ -1,6 +1,3 @@
-{## 6. Generate monitor ##}
-{% set monitor_filename = agent_name + "_monitor.sv" %}
-// File: {{ agent_name }}/{{ monitor_filename }}
 `ifndef {{ agent_name.upper() }}_MONITOR_SV
 `define {{ agent_name.upper() }}_MONITOR_SV
 
@@ -8,7 +5,7 @@ class {{ agent_name }}_monitor extends uvm_monitor;
 
     virtual {{ agent_name }}_if vif;
     {{ agent_name }}_cfg cfg;
-    uvm_analysis_port #({{ agent_name }}_item) item_collected_port;
+    uvm_analysis_port #(uvm_sequence_item) req_ap;
 
     `uvm_component_utils({{ agent_name }}_monitor)
 

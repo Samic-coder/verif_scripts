@@ -1,11 +1,7 @@
-
-{## 5. Generate driver ##}
-{% set driver_filename = agent_name + "_driver.sv" %}
-// File: {{ agent_name }}/{{ driver_filename }}
 `ifndef {{ agent_name.upper() }}_DRIVER_SV
 `define {{ agent_name.upper() }}_DRIVER_SV
 
-class {{ agent_name }}_driver extends uvm_driver #({{ agent_name }}_item);
+class {{ agent_name }}_driver extends uvm_driver;
     
     virtual {{ agent_name }}_if vif;
     {{ agent_name }}_cfg cfg;

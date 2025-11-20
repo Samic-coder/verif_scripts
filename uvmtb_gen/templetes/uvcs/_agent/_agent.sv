@@ -1,6 +1,3 @@
-{## 8. Generate main agent file ##}
-{% set agent_filename = agent_name + ".sv" %}
-// File: {{ agent_name }}/{{ agent_filename }}
 `ifndef {{ agent_name.upper() }}_SV
 `define {{ agent_name.upper() }}_SV
 
