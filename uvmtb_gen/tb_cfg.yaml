@@ -1,0 +1,32 @@
+# uvm_tb_config
+
+uvcs:
+  - name: axi
+    role: master
+    handshake: valid_ready
+    packages: [axi_pkg, common_pkg]
+    signals:
+      - { name: aw_valid, type: logic }
+      - { name: aw_ready, type: logic }
+      - { name: aw_addr,  type: "logic[31:0]" }
+
+  - name: apb
+    role: slave
+    handshake: valid_only
+    packages: [apb_pkg]
+    signals:
+      - { name: paddr,  type: "logic[31:0]" }
+      - { name: pwdata, type: "logic[31:0]" }
+      - { name: penable, type: logic }
+
+env:
+  name: demo_env
+  uvcs:
+    - name: axi
+      count: 2
+    - name: apb
+      count: 1
+  dut: demo_dut
+  use_ref_model: false
+  use_reg_model: true
+
